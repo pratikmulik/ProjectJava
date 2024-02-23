@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.ProductStdDao;
+import com.app.dto.ProductDTO;
 import com.app.dto.ProductStdDTO;
 import com.app.entities.ProductStd;
 @Service
@@ -30,8 +31,11 @@ public class ProductStdServiceImpl implements  ProductStdService {
 
 	@Override
 	public ProductStdDTO findProductStdById(Long productId) {
-		Optional<ProductStd> product=productStdRepo.findById(productId);
-		return mapper.map(product, ProductStdDTO.class);	
+		//Optional<ProductStd> product=productStdRepo.findById(productId);
+		//return mapper.map(product, ProductStdDTO.class);	
+		
+		return mapper.map(productStdRepo.findById(productId).orElseThrow(()-> new ResourceNotFoundException("Invalid Product ID or Product not yet saved"))
+				, ProductStdDTO.class);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ import lombok.ToString;
 @ToString
 public class SalesDocDTO 
 {
-	@JsonProperty(access = Access.READ_ONLY)
+	///@JsonProperty(access = Access.READ_ONLY)
 	private long salesId;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")

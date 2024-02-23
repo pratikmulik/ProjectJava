@@ -1,11 +1,10 @@
 package com.app.service;
 
-import java.util.Optional;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.CartDao;
 import com.app.dto.CartDTO;
 import com.app.entities.Cart;
@@ -29,8 +28,11 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public CartDTO findCartById(Long cartId) {
-		Optional<Cart> cart=cartRepo.findById(cartId);
-		return mapper.map(cart, CartDTO.class);
+	//	Optional<Cart> cart=cartRepo.findById(cartId);
+		//return mapper.map(cart, CartDTO.class);
+		
+		return mapper.map(cartRepo.findById(cartId).orElseThrow(()-> new ResourceNotFoundException("Invalid Product ID or Product not yet saved"))
+				, CartDTO.class);
 	}
 
 }

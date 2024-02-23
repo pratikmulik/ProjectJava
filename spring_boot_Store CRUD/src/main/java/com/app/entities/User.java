@@ -52,7 +52,7 @@ public class User implements Serializable {
 	
 	
 	@OneToOne (fetch = FetchType.LAZY)
-	@JoinColumn(name= "UserStdId")
+	@JoinColumn(name= "UserStdId",referencedColumnName ="UserStdId")
 	private UserStd userStd;
 	
 	

@@ -17,7 +17,7 @@ import lombok.ToString;
 @ToString
 public class DispatchDTO 
 {
-	@JsonProperty(access = Access.READ_ONLY)
+	//@JsonProperty(access = Access.READ_ONLY)
 	private long disptachId;
 	
 	//@NotNull

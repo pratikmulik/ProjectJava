@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class ProductDTO 
 {
-	@JsonProperty(access = Access.READ_ONLY)
+	//@JsonProperty(access = Access.READ_ONLY)
 	private long productId;
 	
 	@NotNull

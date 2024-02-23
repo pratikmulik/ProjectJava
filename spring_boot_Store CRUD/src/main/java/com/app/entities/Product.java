@@ -47,7 +47,7 @@ public class Product implements Serializable {
 	private String productImg;
 
 	@OneToOne (fetch = FetchType.LAZY)
-	@JoinColumn(name = "ProductStdId")
+	@JoinColumn(name = "ProductStdId", referencedColumnName ="ProductStdId" )
 	private ProductStd productStd;
 	
 	

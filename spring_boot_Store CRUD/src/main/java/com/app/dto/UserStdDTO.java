@@ -16,7 +16,7 @@ import lombok.ToString;
 
 public class UserStdDTO 
 {
-	@JsonProperty(access = Access.READ_ONLY)
+	//@JsonProperty(access = Access.READ_ONLY)
 	private long userId;
 	
 	

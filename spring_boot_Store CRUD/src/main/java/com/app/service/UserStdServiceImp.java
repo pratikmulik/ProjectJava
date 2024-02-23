@@ -1,7 +1,5 @@
 package com.app.service;
 
-import java.util.Optional;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,8 +41,11 @@ public class UserStdServiceImp implements UserStdService {
 	
 	@Override
 	public UserStdDTO getUserStdDTO(Long userId) {
-		Optional<UserStd> user=userStdRepo.findById(userId);
-		return mapper.map(user, UserStdDTO.class);
+		//Optional<UserStd> user=userStdRepo.findById(userId);
+		//return mapper.map(user, UserStdDTO.class);
+		
+		return mapper.map(userStdRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("Invalid Product ID or Product not yet saved"))
+				, UserStdDTO.class);
 	}
 
 }

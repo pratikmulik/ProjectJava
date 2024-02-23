@@ -36,6 +36,30 @@ public class ProductStd implements Serializable
 	@Column(name = "ProductCost", nullable = false)
 	private double productCost;
 	//------------------------------------------------------------
+	//@OneToOne(mappedBy = "productStd")
+   	//private Product product;
+	//--------------------------------------------------------------
+	
+	
+	@ManyToOne
+   	private Cart cart;
+   	
+}
+
+
+
+/*
+public class ProductStd implements Serializable
+{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ProductStdId")
+	private long productStdId;
+	
+	@Column(name = "ProductCost", nullable = false)
+	private double productCost;
+	//------------------------------------------------------------
 	@OneToOne(mappedBy = "productStd")
    	private Product product;
 	//--------------------------------------------------------------
@@ -45,3 +69,4 @@ public class ProductStd implements Serializable
    	private Cart cart;
    	
 }
+*/

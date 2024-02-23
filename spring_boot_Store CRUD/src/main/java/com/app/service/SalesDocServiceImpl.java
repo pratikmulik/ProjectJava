@@ -1,11 +1,10 @@
 package com.app.service;
 
-import java.util.Optional;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.SalesDocDao;
 import com.app.dto.SalesDocDTO;
 import com.app.entities.SalesDoc;
@@ -30,8 +29,10 @@ public class SalesDocServiceImpl implements SalesDocService {
 
 	@Override
 	public SalesDocDTO findSalesDocById(Long salesId) {
-		Optional<SalesDoc> sales=salesRepo.findById(salesId);
-		return mapper.map(sales, SalesDocDTO.class);
+		//Optional<SalesDoc> sales=salesRepo.findById(salesId);
+		//return mapper.map(sales, SalesDocDTO.class);
+		return mapper.map(salesRepo.findById(salesId).orElseThrow(()-> new ResourceNotFoundException("Invalid Product ID or Product not yet saved"))
+				, SalesDocDTO.class);
 	}
 
 }
